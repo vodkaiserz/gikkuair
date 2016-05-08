@@ -7,6 +7,7 @@ class CreateBookings < ActiveRecord::Migration
       t.datetime :end_datetime
       t.integer :performance_fee
       t.integer :total
+      t.boolean :status
 
       t.timestamps null: false
     end

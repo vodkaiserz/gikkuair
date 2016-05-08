@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+include Filterable
   belongs_to :user
   has_many :photos, dependent: :destroy
   has_many :bookings, dependent: :destroy
@@ -11,7 +12,9 @@ class Profile < ActiveRecord::Base
   validates :bio, presence: true, length: { maximum: 50 }
   validates :location, presence: true
   validates :performance_fee, presence: true, numericality: { only_integer: true, greater_than: 0 }
-
+  scope :category, -> (category) { where category: category }
+  scope :location, -> (location) { where location: location }
+  scope :starts_with, -> (profile_name) { where("profile_name like ?", "#{profile_name}%")}
   def show_first_photo(size)
     if self.photos.length == 0
       "http://placehold.it/120x66"

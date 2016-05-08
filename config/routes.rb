@@ -31,4 +31,9 @@ Rails.application.routes.draw do
   get "/your_pastevents" => "bookings#your_pastevents"
   get "/your_bookings" => "bookings#your_bookings"
 
+  post '/notify' => 'bookings#notify'
+  post '/your_trips' => 'bookings#your_pastevents'
+
+  get '/search' => 'pages#search'
+
 end

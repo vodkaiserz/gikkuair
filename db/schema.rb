@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160501190945) do
     t.datetime "end_datetime"
     t.integer  "performance_fee"
     t.integer  "total"
+    t.boolean  "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

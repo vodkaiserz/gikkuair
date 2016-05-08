@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
   def show
     @photos = @profile.photos
-
+    @user = User.find(params[:id])
     @booked = Booking.where("profile_id = ? AND user_id = ?", @profile.id, current_user.id).present? if current_user
     @reviews = @profile.reviews
     @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
@@ -39,23 +39,25 @@ class ProfilesController < ApplicationController
     if current_user.id == @profile.user.id
       @photos = @profile.photos
     else
-      redirect_to root_path, notice: "You cannot do this!"
+      redirect_to root_path, notice: "You don't have permission."
     end
   end
 
   def update
     if @profile.update(profile_params)
-      if params[:images]
-        params[:images].each do |image|
-          @profile.photos.create(image: image)
+      if @profile.save
+        if params[:images]
+          params[:images].each do |image|
+            @profile.photos.create(image: image)
+          end
         end
-      end
       
       # @photos = @profile.photos // testing to see if I don't need this?
-      redirect_to edit_profile_path(@profile), notice: "Profile updated!!"
-    else
-      flash[:alert] = "Profile could not be updated!"
-      render :edit
+        redirect_to edit_profile_path(@profile), notice: "Profile updated!!"
+      else
+        flash[:alert] = "Profile could not be updated!"
+        render :edit
+      end
     end
   end
 

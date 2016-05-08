@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-
+gem 'siphon'
+gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -37,7 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "devise"
 gem "toastr-rails"
 # gem "omniauth"
-#gem 'omniauth-oauth2', '~> 1.3.1'
+gem 'omniauth-oauth2', '~> 1.3.1'
 #gem "omniauth-facebook"
 #gem "omniauth-google-oauth2"
 

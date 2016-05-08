@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:notify]
 
 	
 	def preload
@@ -32,8 +32,24 @@ class BookingsController < ApplicationController
 		end
 	end
 
+	protect_from_forgery except: [:notify]
+	  def notify
+	    params.permit!
+	    status = params[:payment_status]
+
+	    booking = Booking.find(params[:item_number])
+
+	    if status = "Completed"
+	      booking.update_attributes status: true
+	    else
+	      booking.destroy
+	    end
+
+	    render nothing: true
+	  end
+	protect_from_forgery except: [:your_pastevents]
 	def your_pastevents
-		@pastevents = current_user.bookings
+		@pastevents = current_user.bookings.where("status = ?", true)
 	end
 
 	def your_bookings
