@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  event: MyString
+  member: 1
+  profile_name: MyString
+  bio: MyText
+  location: MyString
+  is_english: false
+  is_indonesia: false
+  is_travel: false
+  is_wedding: false
+  is_corporate: false
+  is_private: false
+  is_birthday: false
+  is_school: false
+  is_cafe: false
+  performance_fee: 1
+  active: false
+  user_id: 
+
+two:
+  category: MyString
+  event: MyString
+  member: 1
+  profile_name: MyString
+  bio: MyText
+  location: MyString
+  is_english: false
+  is_indonesia: false
+  is_travel: false
+  is_wedding: false
+  is_corporate: false
+  is_private: false
+  is_birthday: false
+  is_school: false
+  is_cafe: false
+  performance_fee: 1
+  active: false
+  user_id: 

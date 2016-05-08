@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Profiles", profiles_path, class: "sidebar-link active" %></li>
+			<li class="sidebar-item"><%= link_to "Bookings", your_bookings_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Past Events", your_pastevents_path, class: "sidebar-link" %></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Listings
+			</div>
+			<div class="panel-body">
+				<% @profiles.each do |profile| %>
+					<div class="row">
+						<div class="col-md-2">
+							<%= image_tag profile.show_first_photo(:thumb) %>
+						</div>
+						<div class="col-md-7">
+							<h4><%= profile.profile_name %></h4>
+						</div>
+						<div class="col-md-3 right">
+							<%= link_to "Update", edit_profile_path(profile), class: "btn btn-primary" %>
+						</div>
+					</div>
+					<hr>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

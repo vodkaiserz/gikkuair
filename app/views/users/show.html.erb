@@ -1,0 +1,94 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="text-center">
+			<%= image_tag avatar_url(@user), class: "avatar-full" %>
+		</div>
+		<% if current_user != @user %>
+			<div class="row-space-2">
+				<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class: "btn btn-primary wide" %>
+			</div>
+		<% end %>
+		<div class="panel panel-default">
+			<div class="panel-heading">Verification</div>
+			<div class="panel-body">
+				Email Address<br>
+				Phone Number
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<h2><%= @user.fullname %></h2>
+		<div class="description row-space-3">
+			<%= @user.description %>
+		</div>
+		<h4><%= pluralize @profiles.length, "Listing" %></h4>
+		<div class="row">
+			<% @profiles.each do |profile| %>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading preview">
+							<%= image_tag profile.show_first_photo(:medium) %>
+						</div>
+						<div class="panel-body">
+							<%= link_to profile.profile_name, profile_path(profile) %>
+							<p>(<%= pluralize(profile.reviews.count, "Review") %>)</p>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<h4>Reviews for this user's listings</h4>
+		<% @profiles.each do |profile| %>
+			<% if !profile.reviews.blank? %>
+				<% profile.reviews.each do |review| %>
+					<div class="row">
+						<div class="col-md-2 text-center">
+							<%= image_tag avatar_url(review.user), class: "img-circle avatar-medium" %><br>
+							<%= review.user.fullname %>
+						</div>
+						<div class="col-md-10">
+							<%= link_to profile.profile_name, profile_path(profile) %><br>
+							<%= review.comment %><br>
+							<%= review.created_at.strftime("%v") %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+
+		<h4>Feedback for this user as a guest!</h4>
+		<p>You can write a review for this user:</p>
+		<%= render "feedbacks/form" %>
+		
+		<h4>Feedback on this guest</h4>
+		<% @guest_feedbacks.each do |feedback| %>
+			<hr>
+
+			<div class="row">
+				<div class="col-md-1">
+					<%= image_tag avatar_url(feedback.user), class: "img-circle avatar-medium" %>
+				</div>
+				<div class="col-md-11">
+					<div>
+						<strong><%= feedback.user.fullname %> <div id=""></div></strong>
+					</div>
+					<div><%= feedback.created_at.strftime("%v") %></div>
+					<div><%= feedback.comment %></div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

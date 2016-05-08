@@ -1,0 +1,136 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Create your Profile page
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			
+			<%= form_for @profile, html: { multipart: true } do |f| %>
+				<div class="row">
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label for="">Category</label>
+							<%= f.select :category, options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label for="">Jumlah Member</label>
+							<%= f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="form-group">
+						<label>Profile Name</label>
+						<%= f.text_field :profile_name, placeholder: "Tuliskan nama Profile", class: "form-control" %>
+					</div>
+					<div class="form-group">
+						<label>Bio</label>
+						<%= f.text_area :bio, placeholder: "Tell us about you", class: "form-control" %>
+					</div>
+					<div class="form-group">
+						<label>Location</label>
+						<%= f.text_field :location, placeholder: "Where is your location?", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Informasi Lainnya</label>
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_english %> English Language
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_indonesia %> Bahasa Indonesia
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_travel %> Willing to Travel
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Available for:</label>
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_cafe %> Cafe Event
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_corporate %> Corporate Event
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_wedding %> Wedding Event
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_birthday %> Birthday Event
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_school %> School Event
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_private %> Private Event
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Performance Fee per Jam</label>
+							<div class="input-group">
+								<div class="input-group-addon">Rp.</div>
+								<%= f.text_field :performance_fee, placeholder: "eg. 1.000.000", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<span class="btn btn-default btn-file">
+								<i class="fa fa-cloud-upload fa-large"></i> Upload Photos
+								<%= file_field_tag "images[]", type: :file, multiple: true %>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="photos"><%= render "photos/list" %></div>
+
+				<div class="row">
+					<div class="form-group">
+						<%= f.check_box :active %> Active?
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "Save", class: "btn btn-primary" %>
+				</div>
+
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
