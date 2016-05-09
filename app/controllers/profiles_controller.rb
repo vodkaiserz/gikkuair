@@ -9,9 +9,6 @@ class ProfilesController < ApplicationController
   def show
     @photos = @profile.photos
     @user = User.find(params[:id])
-    @booked = Booking.where("profile_id = ? AND user_id = ?", @profile.id, current_user.id).present? if current_user
-    @reviews = @profile.reviews
-    @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
   end
 
   def new

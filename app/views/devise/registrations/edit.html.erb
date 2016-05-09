@@ -4,19 +4,17 @@
     <ul class="sidebar-list">
       <!--<li class="sidebar-item"><%= link_to "Edit Account", edit_user_registration_path, class: "sidebar-link active" %></li>-->
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <li class="sidebar-item"><%= link_to "Forgot your password?", new_password_path(resource_name) %></li>
+        <li class="sidebar-item"><%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-default wide"  %></li>
       <% end -%>
 
       <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-        <li class="sidebar-item"><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></li>
+        <li class="sidebar-item"><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "btn btn-default wide"  %></li>
       <% end -%>
 
       <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-        <li class="sidebar-item"><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></li>
+        <li class="sidebar-item"><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "btn btn-default wide"  %></li>
       <% end -%>
     </ul>
-    <br>
-    <%= link_to "View My Account", user_path(current_user), class: "btn btn-default wide" %>
   </div>
 
   <div class="col-md-7 col-md-offset-1 text-center">

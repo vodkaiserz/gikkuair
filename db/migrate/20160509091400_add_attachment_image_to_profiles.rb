@@ -8,3 +8,4 @@ class AddAttachmentImageToProfiles < ActiveRecord::Migration
   def self.down
     remove_attachment :profiles, :profilepic
 end
+end
