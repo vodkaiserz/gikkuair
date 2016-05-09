@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :proposals, only: [:new, :create]
   root 'home#index'
 
   get 'pages' => 'pages#home'
