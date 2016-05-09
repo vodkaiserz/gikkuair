@@ -16,7 +16,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.boolean :is_school
       t.boolean :is_cafe
       t.integer :performance_fee
-      t.boolean :active
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

@@ -26,14 +26,5 @@ class User < ActiveRecord::Base
   	end
   end
 
-  def feedbacks_for_me
-    feedbacks = []
-    self.bookings.each do |booking|
-      if booking.feedback
-        feedbacks << booking.feedback
-      end
-    end
-
-    return feedbacks
-  end
+  
 end

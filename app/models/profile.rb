@@ -2,9 +2,9 @@ class Profile < ActiveRecord::Base
 include Filterable
   belongs_to :user
   has_many :photos, dependent: :destroy
-  has_many :bookings, dependent: :destroy
-  has_many :reviews, dependent: :destroy
 
+  has_attached_file :profilepic, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :profilepic, :content_type => /\Aimage\/.*\Z/
   # validates :photos, presence: true
   validates :category, presence: true
   validates :member, presence: true
@@ -15,20 +15,6 @@ include Filterable
   scope :category, -> (category) { where category: category }
   scope :location, -> (location) { where location: location }
   scope :starts_with, -> (profile_name) { where("profile_name like ?", "#{profile_name}%")}
-  def show_first_photo(size)
-    if self.photos.length == 0
-      "http://placehold.it/120x66"
-    else
-      self.photos[0].image.url(size)
-    end
-  end
 
-  def average_rating
-    if reviews.count == 0
-      return 0
-    else
-      reviews.average(:star).round(2)
-    end
-  end
 
 end

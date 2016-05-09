@@ -31,6 +31,10 @@
 						<%= f.text_field :profile_name, placeholder: "Tuliskan nama Profile", class: "form-control" %>
 					</div>
 					<div class="form-group">
+						<label>Profile Picture</label>
+						<%= f.file_field :profilepic, class: "form-control" %>
+					</div>
+					<div class="form-group">
 						<label>Bio</label>
 						<%= f.text_area :bio, placeholder: "Tell us about you", class: "form-control" %>
 					</div>
@@ -104,12 +108,6 @@
 				</div>
 
 				<div id="photos"><%= render "photos/list" %></div>
-
-				<div class="row">
-					<div class="form-group">
-						<%= f.check_box :active %> Active?
-					</div>
-				</div>
 
 				<div class="actions">
 					<%= f.submit "Save", class: "btn btn-primary" %>
