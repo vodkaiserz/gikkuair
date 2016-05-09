@@ -1,0 +1,2 @@
+class PerformerController < ApplicationController
+end

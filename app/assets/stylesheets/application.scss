@@ -11,14 +11,536 @@ body {
   width: 80%;
 }
 
-.navbar-default {
-  background-color: #FFFFFF;
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-top: 6px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+h1 {
+  font-size: 5vw;
+}
+h3 {
+  font-size: 3vw;
 }
 
-.navbar-default .navbar-brand {
-  color: #FF5A5F;
-  font-size: 2em;
-  font-weight: 400;
+h5 {
+  font-size: 2.5vw;
+}
+section{
+  padding:60px 0;
+}
+section h2.section-heading{
+  font-size:40px;
+  margin-top:0;
+  margin-bottom:15px
+}
+section h3.section-subheading{
+font-size:16px;
+font-family:"Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform:none;font-style:italic;
+font-weight:400;
+margin-bottom:75px
+}
+
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative
+}
+
+.timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: "";
+    width: 2px;
+    background-color: #f1f1f1;
+    left: 40px;
+    margin-left: -1.5px
+}
+
+.timeline>li {
+    margin-bottom: 50px;
+    position: relative;
+    min-height: 50px
+}
+
+.timeline>li:before,
+.timeline>li:after {
+    content: " ";
+    display: table
+}
+
+.timeline>li:after {
+    clear: both
+}
+
+.timeline>li .timeline-panel {
+    width: 100%;
+    float: right;
+    padding: 0 20px 0 100px;
+    position: relative;
+    text-align: left
+}
+
+.timeline>li .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto
+}
+
+.timeline>li .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto
+}
+
+.timeline>li .timeline-image {
+    left: 0;
+    margin-left: 0;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 100;
+    background-color: #fed136;
+    color: #fff;
+    border-radius: 100%;
+    border: 7px solid #f1f1f1;
+    text-align: center
+}
+
+.timeline>li .timeline-image h4 {
+    font-size: 10px;
+    margin-top: 12px;
+    line-height: 14px
+}
+
+.timeline>li.timeline-inverted>.timeline-panel {
+    float: right;
+    text-align: left;
+    padding: 0 20px 0 100px
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto
+}
+
+.timeline>li:last-child {
+    margin-bottom: 0
+}
+
+.timeline .timeline-heading h4 {
+    margin-top: 0;
+    color: inherit
+}
+
+.timeline .timeline-heading h4.subheading {
+    text-transform: none
+}
+
+.timeline .timeline-body>p,
+.timeline .timeline-body>ul {
+    margin-bottom: 0
+}
+
+@media (min-width:768px) {
+    .timeline:before {
+        left: 50%
+    }
+    .timeline>li {
+        margin-bottom: 100px;
+        min-height: 100px
+    }
+    .timeline>li .timeline-panel {
+        width: 41%;
+        float: left;
+        padding: 0 20px 20px 30px;
+        text-align: right
+    }
+    .timeline>li .timeline-image {
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        margin-left: -50px
+    }
+    .timeline>li .timeline-image h4 {
+        font-size: 13px;
+        margin-top: 16px;
+        line-height: 18px
+    }
+    .timeline>li.timeline-inverted>.timeline-panel {
+        float: right;
+        text-align: left;
+        padding: 0 30px 20px 20px
+    }
+}
+
+@media (min-width:992px) {
+    .timeline>li {
+        min-height: 150px
+    }
+    .timeline>li .timeline-panel {
+        padding: 0 20px 20px
+    }
+    .timeline>li .timeline-image {
+        width: 150px;
+        height: 150px;
+        margin-left: -75px
+    }
+    .timeline>li .timeline-image h4 {
+        font-size: 18px;
+        margin-top: 30px;
+        line-height: 26px
+    }
+    .timeline>li.timeline-inverted>.timeline-panel {
+        padding: 0 20px 20px
+    }
+}
+
+@media (min-width:1200px) {
+    .timeline>li {
+        min-height: 170px
+    }
+    .timeline>li .timeline-panel {
+        padding: 0 20px 20px 100px
+    }
+    .timeline>li .timeline-image {
+        width: 170px;
+        height: 170px;
+        margin-left: -85px
+    }
+    .timeline>li .timeline-image h3 {
+        margin-top: 30px
+    }
+    .timeline>li.timeline-inverted>.timeline-panel {
+        padding: 0 100px 20px 20px
+    }
+}
+
+.navbar-default {
+    border-color: rgba(34,34,34,.05);
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    text-transform: uppercase;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+    color: #f05f40;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #eb3812;
+}
+
+.navbar-default .nav > li>a,
+.navbar-default .nav>li>a:focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:focus:hover {
+    color: #f05f40;
+}
+
+.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    color: #f05f40!important;
+    background-color: transparent;
+}
+
+.navbar-default .nav > li.active>a:hover,
+.navbar-default .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+
+
+@media(min-width:768px) {
+    .navbar-default {
+        border-color: rgba(255,255,255,.3);
+        background-color: transparent;
+    }
+    .navbar-defaults {
+        border-color: rgba(255,255,255,.3);
+        background-color: #fff;
+    }
+
+    .navbar-default .navbar-header .navbar-brand {
+        color: rgba(255,255,255,.7);
+    }
+
+    .navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus {
+        color: #fff;
+    }
+
+    .navbar-default .nav > li>a,
+    .navbar-default .nav>li>a:focus {
+        color: rgba(255,255,255,.7);
+    }
+
+    .navbar-default .nav > li>a:hover,
+    .navbar-default .nav>li>a:focus:hover {
+        color: #fff;
+    }
+
+    .navbar-shrink {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    .navbar-shrink .navbar-header .navbar-brand {
+        font-size: 14px;
+        color: #f05f40;
+    }
+
+    .navbar-shrink .navbar-header .navbar-brand:hover,
+    .navbar-shrink .navbar-header .navbar-brand:focus {
+        color: #eb3812;
+    }
+
+    .navbar-shrink .nav > li>a,
+    .navbar-shrink .nav>li>a:focus {
+        color: #222;
+    }
+
+    .navbar-shrink .nav > li>a:hover,
+    .navbar-shrink .nav>li>a:focus:hover {
+        color: #f05f40;
+    }
+}
+
+
+
+.icon-white {color: white}
+.icon-black {color: black}
+.bg-black {
+      background-color: black
+    }
+.bg-white {
+  background-color: white;
+}
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+.quote {
+  display: block;
+  color: #777;
+  text-align: right;
+}
+
+/* Custom Button Styles */
+
+.btn-light {
+    border-radius: 0;
+    color: #333;
+    background-color: rgb(255,255,255);
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+
+/* Custom Horizontal Rule */
+
+hr.small {
+    max-width: 100px;
+}
+
+
+
+/* Header */
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Carousel */
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+now override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  margin-bottom: 20%;
+  left: 15%;
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.carousel-caption-first {
+  position: absolute;
+  right: 15%;
+  bottom: 45%;
+  top: 20%;
+  left: 15%;
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  font-family:"Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+}
+
+.carousel-caption-quote-right {
+  position: absolute;
+  right: 15%;
+  top: 30%;
+  left: 15%;
+  z-index: 10;
+  color: #fff;
+  text-align: right;
+  font-size: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.carousel-caption-quote-center {
+  position: absolute;
+  right: 15%;
+  top: 15%;
+  left: 15%;
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+
+.carousel {
+  max-height: 600px;
+  overflow: hidden;
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.carousel-inner-custom {
+  height: auto;
+  width: auto;
+}
+
+/* About */
+
+.about {
+    padding: 50px 0;
+}
+
+/* Services */
+
+.services {
+    padding: 50px 0;
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+
+/* Footer */
+
+footer {
+    padding: 100px 0;
 }
 
 .btn-primary.btn {

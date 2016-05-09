@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  root 'home#index'
+
+  get 'pages' => 'pages#home'
+  get 'performer' => 'performer#index'
+  mount Monologue::Engine, at: '/blog'
 
   devise_for 	:users,
   				path: "",

@@ -1,13 +1,13 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<!-- Image -->
+		<!-- Image 
 		<div class="row">
 			<div class="col-md-12">
 				<%= image_tag @photos[0].image.url, class: "img-responsive" if @photos.length > 0 %>
 			</div>
 		</div>
 
-		<br>
+		<br>-->
 
 		<!-- Main Info -->
 		<div class="row">
@@ -44,38 +44,37 @@
 			</div>
 
 			<div class="col-md-4">
-
 				<!-- Reservation form -->
-				<% if !current_user.profiles.include?(@profile) %>
-					<%= render "bookings/form" %>
-				<% end %>
-				<br>
+
 				<% if current_user != @user %>
 					<%= link_to "Send Message", conversations_path(sender_id: @current_user.id, recipient_id: @user.id), method: "post", class: "btn btn-primary wide" %>
 				<% end %>
+				<% if current_user == @user %>
+					<%= link_to "Profile Home", profiles_path, class: "btn btn-primary" %>
+					<%= link_to "Update Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
+				<% end %>
+
 			</div>
 
 		</div>
 
 		<!-- About -->
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<h2>About Performer</h2>
 				<p><%= @profile.bio %></p>
 			</div>
-		</div>
-		<hr>
-		<!-- Amenities -->
-		<div class="row">
-					<div class="col-md-6">
+			<div class="col-md-2">
+						<br>
 						<h4>Status Tambahan: </h4>
 							<ul class="amenities">
-								<li class="<%= 'text-line-through' if !@profile.is_english %>">English Language</li>
+								<li class="<%= 'text-line-through' if !@profile.is_english %>"> English Language</li>
 								<li class="<%= 'text-line-through' if !@profile.is_indonesia %>">Bahasa Indonesia</li>
 								<li class="<%= 'text-line-through' if !@profile.is_travel %>">Willing to travel</li>
 							</ul>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-2">
+						<br>
 						<h4>Available for: </h4>
 							<ul class="amenities">
 								<li class="<%= 'text-line-through' if !@profile.is_cafe %>">Cafe Event</li>
@@ -87,6 +86,7 @@
 							</ul>
 					</div>
 		</div>
+		<hr>
 		<!-- Carousel -->
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -125,9 +125,10 @@
 		</div>
 		
 		<br>
-		<hr>
+		
 
-		<!-- Reviews -->
+		<!-- Reviews 
+		<hr>
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Reviews <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
@@ -140,18 +141,24 @@
 					</div>
 				</div>
 			</div>
+		</div>-->
+
+		<% if current_user != @user %>
+		<hr>
+		<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<%= render "bookings/form" %>
 		</div>
-
-
-
+		<hr>
+		<% end %>
 
 	</div>
 </div>
-
+<!--
 <script>
 			$("#average_rating").raty({
 				path: "/assets",
 				readOnly: true,
 				score: <%= @profile.average_rating %>
 			});
-		</script>
+		</script>-->

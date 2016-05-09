@@ -1,19 +1,22 @@
 	<div class="panel panel-default">
 	<div class="panel-heading">
 		Create your Profile page
+		<br>
+		<%= link_to "Back to Profile Home", profiles_path, class: "btn" %>
 	</div>
+
 	<div class="panel-body">
 		<div class="container">
 			
 			<%= form_for @profile, html: { multipart: true } do |f| %>
 				<div class="row">
-					<div class="col-md-4 select">
+					<div class="col-md-3 left select">
 						<div class="form-group">
 							<label for="">Category</label>
 							<%= f.select :category, options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Select", class: "form-control" %>
 						</div>
 					</div>
-					<div class="col-md-4 select">
+					<div class="col-md-3 select">
 						<div class="form-group">
 							<label for="">Jumlah Member</label>
 							<%= f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Select", class: "form-control" %>

@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @profiles = current_user.profiles
+    @profile = current_user.profile
   end
 
   def show
@@ -15,11 +15,11 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = current_user.profiles.new
+    @profile = current_user.build_profile
   end
 
   def create
-    @profile = current_user.profiles.new(profile_params)
+    @profile = current_user.build_profile(profile_params)
     if @profile.save
       if params[:images]
         params[:images].each do |image|

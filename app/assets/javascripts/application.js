@@ -11,9 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require toastr
 //= require private_pub
+//= require cbpAnimatedHeader
+//= require classie
+//= require creative
 //= require_tree .

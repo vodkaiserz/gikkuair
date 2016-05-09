@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = @conversation.messages.new(message_params)
-		# @messages = @conversation.messages.order("created_at DESC") I don't think I need this code...
+		@messages = @conversation.messages.order("created_at DESC")
 
 		if @message.save
 			respond_to :js

@@ -76,4 +76,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+    config.action_mailer.default_url_options = { host: 'ec2-52-77-215-44.ap-southeast-1.compute.amazonaws.com', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'ec2-52-77-215-44.ap-southeast-1.compute.amazonaws.com:3000',
+    :user_name => "leinadsaille@gmail.com",
+    :password => "14desember88",
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

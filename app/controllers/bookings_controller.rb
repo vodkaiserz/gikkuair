@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
 
 	def create
 		profile = Profile.find(params[:profile_id])
-		if current_user.profiles.include?(profile)
+		if current_user == @user
 			flash[:alert] = "You cannot book your own profile."
 			redirect_to profile_path(profile)
 		else
