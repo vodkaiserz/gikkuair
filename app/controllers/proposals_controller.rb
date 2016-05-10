@@ -4,10 +4,9 @@ class ProposalsController < ApplicationController
   end
   def create
     @proposal = Proposal.new(proposal_params)
-
     if @proposal.valid?
       ProposalMailer.message_me(@proposal).deliver_now
-      redirect_to new_proposal_path, notice: "Thankyou for your request of quotation."
+      redirect_to :back, notice: "Thankyou for your request of quotation."
     else
       render :new
     end
@@ -18,4 +17,5 @@ class ProposalsController < ApplicationController
   def proposal_params
     params.require(:proposal).permit(:name, :email, :telnum, :category, :event, :eventmore)
   end
+
 end

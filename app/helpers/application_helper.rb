@@ -7,7 +7,5 @@ module ApplicationHelper
 			return "https://gravatar.com/avatar/#{gravatar_id}.jpg"
 		end
 	end
-	def proposal
-		Proposal.new
-	end
+
 end
