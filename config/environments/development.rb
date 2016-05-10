@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.web_console.whitelisted_ips = '10.0.2.2'
+  config.web_console.whiny_requests = false
   config.action_mailer.default_url_options = { host: 'ec2-52-77-215-44.ap-southeast-1.compute.amazonaws.com', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

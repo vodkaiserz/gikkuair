@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :proposals, only: [:new, :create]
+  
   root 'home#index'
 
   get 'pages' => 'pages#home'
@@ -16,28 +16,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   
   resources :photos
+  resources :proposals, only: [:new, :create]
 
   resources :profiles, except: [:destroy] do
-  	resources :bookings, only: [:create]
-    resources :reviews, only: [:create, :destroy]
+    resources :proposals, only: [:new, :create]
   end
-
-  resources :bookings, only: [:create] do
-    resource :feedback, only: [:create]
-  end
-
-  resources :conversations, only: [:index, :create] do
-    resources :messages, only: [:index, :create]
-  end
-
   
-  get "/preload" => "bookings#preload"
-  get "/preview" => "bookings#preview"
-  get "/your_pastevents" => "bookings#your_pastevents"
-  get "/your_bookings" => "bookings#your_bookings"
-
-  post '/notify' => 'bookings#notify'
-  post '/your_trips' => 'bookings#your_pastevents'
+  get '/proposals' => 'proposals#new'
 
   get '/search' => 'pages#search'
 

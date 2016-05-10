@@ -17,11 +17,8 @@
 						<%= image_tag @profile.profilepic, class: "img-circle avatar-full" %><br><br>
 						<h4><%= @profile.profile_name %></h4>
 						<%= @profile.location %>
-					</div>
-					<div class="col-md-9">
-
 						<div class="row text-center row-space-1">
-							<div class="col-sm-3">
+							<div class="col-sm-3 col-sm-offset-3">
 								<i class="fa fa-music fa-2x"></i>
 							</div>
 							<div class="col-sm-3">
@@ -37,8 +34,9 @@
 								<%= pluralize @profile.member, "Member" %>
 							</div>
 						</div>
-						<br>
-						
+					</div>
+					<div class="col-md-9">
+
 					</div>
 				</div>
 			</div>
@@ -125,7 +123,7 @@
 		<br>
 		
 
-		
+								<% render :partial => "proposals/form", :locals => {:proposal => Proposal.new} %>
 
 
 	</div>

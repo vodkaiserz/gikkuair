@@ -1,0 +1,87 @@
+<% @proposal ||= Proposal.new %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Request your quotation now!</h2>
+  </div>
+  <div class="panel-body">
+    <div class="container">
+    <%= form_for proposal do |f| %>
+      <% if @proposal.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@proposal.errors.count, "error")%> mohon cek kembali form quotation request:" 
+          </h2>
+
+          <ul>
+            <% @proposal.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          <ul>
+        </div>
+      <% end %>
+      
+      <div class="row">
+          <div class="col-md-3 left select">
+            <div class="form-group">
+              <label for="">Category</label>
+              <%= f.select :category, options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Select", class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-3 select">
+            <div class="form-group">
+              <label for="">Event</label>
+              <%= f.select :event, options_for_select([["Cafe Event", "Cave Event"], ["Corporate Event", "Corporate Event"], ["Wedding Event", "Wedding Event"], ["Birthday Event", "Birthday Event"], ["School Event", "School Event"], ["Private Event", "Private Event"]]), id: "Event", prompt: "Select", class: "form-control" %>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+          <label>Detail Event</label>
+          <%= f.text_field :eventmore, placeholder: "Mohon berikan detail untuk event anda.", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <%= f.text_field :name, placeholder: "Nama lengkap anda", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+          <label>E-mail</label>
+          <%= f.text_field :email, placeholder: "E-mail anda", class: "form-control" %>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+         <div class="form-group">
+          <label>No. Telepon</label>
+          <%= f.text_field :telnum, placeholder: "Nomor telepon yang bisa dihubungi", class: "form-control" %>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+        <div class="actions">
+          <%= f.submit 'Send', class:'btn btn-primary'  %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <% end %>
+</div>
+</div>
+
+
+
+
+
+

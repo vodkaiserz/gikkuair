@@ -7,7 +7,7 @@ class ProposalsController < ApplicationController
 
     if @proposal.valid?
       ProposalMailer.message_me(@proposal).deliver_now
-      redirect_to new_proposal_path, notice: "Thankyou for your proposal."
+      redirect_to new_proposal_path, notice: "Thankyou for your request of quotation."
     else
       render :new
     end
@@ -16,6 +16,6 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:name, :email, :subject, :content)
+    params.require(:proposal).permit(:name, :email, :telnum, :category, :event, :eventmore)
   end
 end

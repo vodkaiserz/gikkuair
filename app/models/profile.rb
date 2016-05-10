@@ -2,6 +2,7 @@ class Profile < ActiveRecord::Base
 include Filterable
   belongs_to :user
   has_many :photos, dependent: :destroy
+  has_many :proposals
 
   has_attached_file :profilepic, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   validates_attachment_content_type :profilepic, :content_type => /\Aimage\/.*\Z/
