@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <div class="container">
-    <%= form_for :proposal, url: proposals_path do |f| %>
+    <%= form_for proposal do |f| %>
       <% if @proposal.errors.any? %>
         <div id="error_explanation">
           <h2>
