@@ -8,9 +8,6 @@ class PagesController < ApplicationController
 
     @arrProfiles = @profiles.to_a
 
-    
-
-    end
-
   end
+
 end

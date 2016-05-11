@@ -17,26 +17,10 @@
 						<%= image_tag @profile.profilepic, class: "img-circle avatar-full" %><br><br>
 						<h4><%= @profile.profile_name %></h4>
 						<%= @profile.location %>
-						<div class="row text-center row-space-1">
-							<div class="col-sm-3 col-sm-offset-3">
-								<i class="fa fa-music fa-2x"></i>
-							</div>
-							<div class="col-sm-3">
-								<i class="fa fa-users fa-2x"></i>
-							</div>
-						</div>
-
-						<div class="row text-center">
-							<div class="col-sm-3">
-								<%= @profile.category %>
-							</div>
-							<div class="col-sm-3">
-								<%= pluralize @profile.member, "Member" %>
-							</div>
-						</div>
+						
 					</div>
 					<div class="col-md-9">
-
+						
 					</div>
 				</div>
 			</div>
@@ -51,8 +35,25 @@
 				<% end %>
 
 			</div>
-
 		</div>
+		<br>
+		<div class="row">
+				<div class="col-md-3 text-center">
+						<div class="row text-center">
+							<div class="col-sm-4">
+								<i class="fa fa-music fa-2x"></i>
+								<br>
+								<%= @profile.category %>
+							</div>
+							<div class="col-sm-4">
+								<i class="fa fa-users fa-2x"></i>
+								<br>
+								<%= pluralize @profile.member, "Member" %>
+							</div>
+						</div>
+
+				</div>
+			</div>
 
 		<!-- About -->
 		<div class="row">
