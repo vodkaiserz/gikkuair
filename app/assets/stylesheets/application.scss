@@ -48,7 +48,51 @@ font-weight:400;
 margin-bottom:75px
 }
 
-
+.btn-signup { 
+  color: #000000; 
+  background-color: #FFFFFF; 
+  border-color: #FFDD00; 
+} 
+ 
+.btn-signup:hover, 
+.btn-signup:focus, 
+.btn-signup:active, 
+.btn-signup.active, 
+.open .dropdown-toggle.btn-signup { 
+  color: #000000; 
+  background-color: #FFF200; 
+  border-color: #FFDD00; 
+} 
+ 
+.btn-signup:active, 
+.btn-signup.active, 
+.open .dropdown-toggle.btn-signup { 
+  background-image: none; 
+} 
+ 
+.btn-signup.disabled, 
+.btn-signup[disabled], 
+fieldset[disabled] .btn-signup, 
+.btn-signup.disabled:hover, 
+.btn-signup[disabled]:hover, 
+fieldset[disabled] .btn-signup:hover, 
+.btn-signup.disabled:focus, 
+.btn-signup[disabled]:focus, 
+fieldset[disabled] .btn-signup:focus, 
+.btn-signup.disabled:active, 
+.btn-signup[disabled]:active, 
+fieldset[disabled] .btn-signup:active, 
+.btn-signup.disabled.active, 
+.btn-signup[disabled].active, 
+fieldset[disabled] .btn-signup.active { 
+  background-color: #FFFFFF; 
+  border-color: #FFDD00; 
+} 
+ 
+.btn-signup .badge { 
+  color: #FFFFFF; 
+  background-color: #000000; 
+}
 .timeline {
     list-style: none;
     padding: 0;
@@ -399,7 +443,73 @@ hr.small {
     background-size: cover;
     -o-background-size: cover;
 }
+.headerku {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: image-url("performer-1.jpg");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
+.headerku .headerku-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+}
+
+.headerku .headerku-content .headerku-content-inner h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.headerku .headerku-content .headerku-content-inner hr {
+    margin: 30px auto;
+}
+
+.headerku .headerku-content .headerku-content-inner p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,.7);
+}
+
+@media(min-width:768px) {
+    headerku {
+        min-height: 100%;
+    }
+
+    headerku .headerku-content {
+        position: absolute;
+        top: 50%;
+        padding: 0 50px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    headerku .headerku-content .headerku-content-inner {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1000px;
+    }
+
+    headerku .headerku-content .headerku-content-inner p {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 80%;
+        font-size: 18px;
+    }
+}
 /* Carousel */
 
 .carousel-fade .carousel-inner .item {
@@ -454,13 +564,12 @@ now override the 3.3 new styles for modern browsers & apply opacity
 }
 .carousel-caption {
   position: absolute;
-  right: 15%;
+  width: 80px;
   margin-bottom: 20%;
-  left: 15%;
+  left: 45%;
   z-index: 10;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
 }
 
 .carousel-caption-first {
