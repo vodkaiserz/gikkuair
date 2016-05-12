@@ -50,7 +50,7 @@ margin-bottom:75px
 
 .btn-signup { 
   color: #000000; 
-  background-color: #FFFFFF; 
+  background-color: transparent; 
   border-color: #FFDD00; 
 } 
  
@@ -301,6 +301,9 @@ fieldset[disabled] .btn-signup.active {
     color: #eb3812;
 }
 
+.navbar-default .nav-boxed {
+  border: 2px black solid;
+}
 .navbar-default .nav > li>a,
 .navbar-default .nav>li>a:focus {
     text-transform: uppercase;
@@ -341,6 +344,10 @@ fieldset[disabled] .btn-signup.active {
     .navbar-default .navbar-header .navbar-brand:focus {
         color: #fff;
     }
+    .navbar-default .nav-boxed {
+      border: 2px black solid;
+      margin: 7px;
+    }
 
     .navbar-default .nav > li>a,
     .navbar-default .nav>li>a:focus {
@@ -360,6 +367,10 @@ fieldset[disabled] .btn-signup.active {
     .navbar-shrink .navbar-header .navbar-brand {
         font-size: 14px;
         color: #f05f40;
+    }
+
+    .navbar-shrink .nav-boxed {
+      border: 2px white solid;
     }
 
     .navbar-shrink .navbar-header .navbar-brand:hover,

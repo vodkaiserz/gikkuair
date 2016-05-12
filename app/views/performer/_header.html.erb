@@ -4,13 +4,21 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
            
-              <h1> GEAR UP FOR YOUR NEXT GIG! </h1>
+              <h2> GEAR UP FOR YOUR NEXT GIG! </h2>
            
         </div>
       </div>
+      <br>
+      <br>
+      <br>
       <div class="row">
-        <div class="col-md-2 col-md-offset-5"
-          <a href="#" class="btn-signup" role="button"><p>Sign Up</p></a>
+        <div class="col-md-2 col-md-offset-5">
+        <% if user_signed_in? %>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_registration_path do %>
+            <button class="btn-signup">Sign Up</button>
+        <% end %>
         </div>
       </div>
     </div>
