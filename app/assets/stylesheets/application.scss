@@ -601,7 +601,7 @@ now override the 3.3 new styles for modern browsers & apply opacity
 .carousel-caption {
   position: absolute;
   width: 80px;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
   left: 45%;
   z-index: 10;
   color: #fff;
@@ -617,33 +617,25 @@ now override the 3.3 new styles for modern browsers & apply opacity
   z-index: 10;
   color: #fff;
   text-align: center;
-  font-size: 30px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
   font-family:"Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
 }
-
-.carousel-caption-quote-right {
-  position: absolute;
-  right: 15%;
-  top: 30%;
-  left: 15%;
-  z-index: 10;
-  color: #fff;
-  text-align: right;
-  font-size: 30px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+.home-top {
+  margin-top: 5%;
 }
-
-.carousel-caption-quote-center {
-  position: absolute;
-  right: 15%;
-  top: 15%;
-  left: 15%;
-  z-index: 10;
-  color: #fff;
-  text-align: center;
-  font-size: 30px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+.home-bot {
+  margin-bottom: 15%;
+}
+@media(min-width:768px) {
+    .home-top {
+      margin-top: 5%;
+      font-size: 20px;
+    }
+    .home-bot {
+      margin-top: 20%;
+      font-size: 20px;
+      margin-bottom: 10%;
+    }
 }
 
 

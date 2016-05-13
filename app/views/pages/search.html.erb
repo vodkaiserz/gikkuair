@@ -1,91 +1,50 @@
 <div id="wrapper">
-
+<br>
   <div id="article">
     <div class="row">
 
       <div class="col-md-12">
-        <%= form_tag(search_path, method: 'get') do %>
+        <%= form_for_filterrific @filterrific do |f| %>
 	      <div class="row">
-		        <div class="col-md-4 select">
+		        <div class="col-md-3 select">
 				       <div class="form-group">
                       <label> Category </label>
-				              <%= select :category, params[:category], options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Select", class: "form-control" %>
+				              <%= f.select(
+                        :category,
+                        @filterrific.select_options[:category],
+                        { include_blank: '- Any -' }
+                      ) %>
 				        </div>
 				    </div>
-				<div class="col-md-4">
-            <label> Enter Location</label>
-			      <%= text_field_tag :location, params[:location], placeholder: "Enter Location...", class: "form-control" %>
-			    </div>
-			    <div class="col-md-4">
-            <label> Search Location</label>
-			      <%= text_field_tag :starts_with, params[:starts_with], placeholder: "Type Profile Name...", class: "form-control" %>
-			    </div>
-	      </div>
-        </div>
-          <div class="row">
-
-            <div class="col-md-6">
-              <%= text_field_tag :start_datetime, params[:start_datetime], placeholder: "Start Date", class: "form-control" %>
-            </div>
-            <div class="col-md-6">
-              <%= text_field_tag :end_datetime, params[:end_datetime], placeholder: "End Date", class: "form-control" %>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <%= submit_tag "Search", class: "btn btn-primary pull-right" %>
-          </div>
-
-        <% end %>
-
-        <hr>
-
-        <div class="row">
-          <% @arrProfiles.each do |profile| %>
-
-            <div class="col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading preview">
-                  <%= image_tag profile.photos[0].image.url(:medium) if profile.photos.length > 0 %>
+            <div class="col-md-4  ">
+               <div class="form-group">
+                      <label> Location </label>
+                      <%= f.text_field(
+                        :search_query,
+                        class: 'filterrific-periodically-observed'
+                      ) %>
                 </div>
-                <div class="panel-body">
-                  <%= link_to profile.profile_name, profile %>
-                </div>
+            </div>
+          <% end %>
+            <div class="col-md-3">
+              <br>
+              <br>
+              <div class="form-group">
+              <%= link_to(
+                'Reset filters',
+                reset_filterrific_url,
+              ) %>
               </div>
             </div>
 
-          <% end %>
-        </div>
-
+         </div>
       </div>
     </div>
-  </div>
+</div>
+<hr>
+<%= render(
+  partial: 'pages/home',
+  locals: { profiles: @profiles }
+) %>
 
 </div>
-
-<script>
-  $(function() {
-    $("#start_datetime").datepicker({
-      dateFormat: 'dd-mm-yy',
-      minDate: 0,
-      maxDate: '3m',
-      onSelect: function(selected) {
-        $('#end_datetime').datepicker("option", "minDate", selected);
-        $('#end_datetime').attr('disabled', false);
-      }
-    });
-
-    $("#end_datetime").datepicker({
-      dateFormat: 'dd-mm-yy',
-      minDate: 0,
-      maxDate: '3m',
-      onSelect: function(selected) {
-        $('#start_datetime').datepicker("option", "maxDate", selected);
-      }
-    });
-
-  })
-
-</script>

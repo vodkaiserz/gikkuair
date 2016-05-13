@@ -1,13 +1,23 @@
 class PagesController < ApplicationController
   def home
-    @profiles = Profile.all
+    @profiles = Profile.paginate(:page => params[:page])
   end
-
   def search
-    @profiles = Profile.filter(params.slice(:category, :location, :starts_with))
+    
+	  @filterrific = initialize_filterrific(
+	    Profile,
+	    params[:filterrific],
+	  select_options: {
+	      category: Profile.options_for_select
+      },
 
-    @arrProfiles = @profiles.to_a
-
-  end
-
+    ) or return
+    @profiles = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+		end
+	end
 end
+
+

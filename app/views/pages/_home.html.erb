@@ -1,5 +1,6 @@
-<div class="tags">  
+<div id="filterrific_results" class="tags">  
   <div class="container">
+    
     <div class="cards row">
       <br>    
 
@@ -7,8 +8,8 @@
       <div class="card col-xs-5 col-xs-offset-1 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-1">
       <%= image_tag t.profilepic, class: "img-circle avatar-full" %>
       <br>
-      <h4 class="text-center"><%= t.profile_name   %></h4>
-      <p class="text-center"><%= t.location  %></p>
+      <h4 class="text-center"><%= t.profile_name%></h4>
+      <p class="text-center"><%= t.category  %>, <%= t.location  %></p>
       <p class="text-center"><%= link_to "Lihat Profil" , profile_path(t) %></p>
       </div>
       <% end %>
@@ -16,3 +17,5 @@
     </div>
   </div>
 </div>
+
+    <%= will_paginate @profiles%>

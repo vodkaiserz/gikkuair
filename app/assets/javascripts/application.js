@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
+//= require filterrific/filterrific-jquery
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require toastr

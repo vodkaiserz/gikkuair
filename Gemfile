@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'filterrific'
+gem 'will_paginate', '~> 3.1'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'monologue'
 gem "monologue_image_upload", :git => "git://github.com/vodkaiserz/monologue_image_upload.git"
 gem 'jquery-turbolinks', '~> 2.1'
