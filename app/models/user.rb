@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   has_one :profile, dependent: :destroy
-  has_many :bookings, dependent: :destroy
-  has_many :reviews, dependent: :destroy
-  has_many :feedbacks, dependent: :destroy
 
   validates :fullname, presence: true, length: { maximum: 50 }
 
