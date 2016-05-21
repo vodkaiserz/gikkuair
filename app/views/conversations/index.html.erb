@@ -14,7 +14,7 @@
                     <%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
                   </div>
                   <div class="col-md-2">
-                    <%= other.fullname %><br>
+                    <%= other.profile.profile_name rescue other.fullname %><br>
                     <%= conversation.messages.last.message_time %>
                   </div>
                   <div class="col-md-8">
