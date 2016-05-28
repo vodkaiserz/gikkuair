@@ -18,7 +18,7 @@
 					</div>
 					<div class="col-md-3 select">
 						<div class="form-group">
-							<label for="">Jumlah Member</label>
+							<label for="">Jumlah Personil</label>
 							<%= f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Select", class: "form-control" %>
 						</div>
 					</div>
@@ -32,12 +32,17 @@
 					</div>
 					<div class="form-group">
 						<label>Profile Picture</label>
-						<br><%= image_tag @profile.profilepic, class: "avatar-large" %>
+						<br><%= image_tag @profile.profilepic, class: "thumb" %>
+
 						<%= f.file_field :profilepic, class: "form-control", value: "Choose Profile Picture" %>
 					</div>
 					<div class="form-group">
+						<label>Profile Cover Photo</label>
+						<%= f.file_field :coverphoto, class: "form-control", value: "Choose Profile Cover Photo" %>
+					</div>
+					<div class="form-group">
 						<label>Bio</label>
-						<%= f.text_area :bio, placeholder: "Tell us about you", class: "form-control" %>
+						<%= f.text_area :bio, placeholder: "Tell shortly about yourself", class: "form-control" %>
 					</div>
 					<div class="form-group">
 						<label>Location</label>
@@ -88,11 +93,17 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label>Standard Performance Rate: </label>
+							<label>Standard Performance Rate </label>
 							<div class="input-group">
 								<div class="input-group-addon">Rp.</div>
 								<%= f.text_field :performance_fee, placeholder: "eg. 1.000.000", class: "form-control" %>
 							</div>
+						</div>
+					</div>
+					<div class="col-md-2 select">
+						<label>: </label>
+						<div class="form-group">
+							<%= f.select :fee_unit, options_for_select([["/jam", "/jam"], ["/hari", "/hari"], ["/malam", "/malam"], ["/event", "/event"]]), id: "fee_unit", prompt: "Select", class: "form-control" %>
 						</div>
 					</div>
 				</div>

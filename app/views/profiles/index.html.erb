@@ -19,7 +19,7 @@
 					<% end %>
 					<% if current_user.profile(@profile) %>
 						<div class="col-md-2">
-							<!--image goes here later-->
+							<%= image_tag @profile.profilepic, class: "thumb" %>
 						</div>
 						<div class="col-md-6">
 							<h4><%= @profile.profile_name %></h4>

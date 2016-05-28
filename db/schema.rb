@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160509091400) do
     t.boolean  "is_school"
     t.boolean  "is_cafe"
     t.integer  "performance_fee"
+    t.string   "fee_unit"
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -117,6 +118,10 @@ ActiveRecord::Schema.define(version: 20160509091400) do
     t.string   "profilepic_content_type"
     t.integer  "profilepic_file_size"
     t.datetime "profilepic_updated_at"
+    t.string   "coverphoto_file_name"
+    t.string   "coverphoto_content_type"
+    t.integer  "coverphoto_file_size"
+    t.datetime "coverphoto_updated_at"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"

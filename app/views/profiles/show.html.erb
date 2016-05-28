@@ -1,16 +1,18 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<!-- Image 
+		<!-- Image -->
+		<%= image_tag @profile.coverphoto %>
 
-
-		<br>-->
+		<br>
 
 		<!-- Main Info -->
 		<div class="row">
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-3 text-center">
+						
 						<%= image_tag @profile.profilepic, class: "img-circle avatar-full" %><br><br>
+						
 						<h4><%= @profile.profile_name %></h4>
 						<%= @profile.location %>
 						

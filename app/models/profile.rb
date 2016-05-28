@@ -3,15 +3,17 @@ class Profile < ActiveRecord::Base
   has_many :photos, dependent: :destroy
   has_many :proposals
 
-  has_attached_file :profilepic, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :profilepic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/profilepics/original/missing.png"
   validates_attachment_content_type :profilepic, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :coverphoto
+  validates_attachment_content_type :coverphoto, :content_type => /\Aimage\/.*\Z/
   # validates :photos, presence: true
   validates :category, presence: true
   validates :member, presence: true
   validates :profile_name, presence: true, length: { maximum: 50 }
   validates :bio, presence: true, length: { maximum: 50 }
   validates :location, presence: true
-  validates :performance_fee, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :performance_fee,  numericality: { only_integer: true, greater_than: 0 }
  
   filterrific(
     available_filters: [
