@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery.uploadPreview
+//= require jquery.uploadPreview2
 //= require bootstrap-sprockets
 //= require filterrific/filterrific-jquery
 //= require jquery_ujs

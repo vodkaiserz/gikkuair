@@ -1,8 +1,82 @@
+<style type="text/css">
+#image-preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+  input {
+    line-height: 200px;
+    font-size: 200px;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+  }
+  label {
+    position: absolute;
+    z-index: 5;
+    opacity: 0.8;
+    cursor: pointer;
+    background-color: #bdc3c7;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+  }
+}
+#image-preview2 {
+  width: 280px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+  input {
+    line-height: 200px;
+    font-size: 200px;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+  }
+  label {
+    position: absolute;
+    z-index: 5;
+    opacity: 0.8;
+    cursor: pointer;
+    background-color: #bdc3c7;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+  }
+}
+img {
+	height:200px;
+	width:200px;
+}
+</style>
 	<div class="panel panel-default">
 	<div class="panel-heading">
-		Create your Profile page
+		<b>Membuat Halaman Profil Anda</b><br>		
+		<em><i class="fa fa-lightbulb-o" aria-hidden="true"></i>Tips: Buatlah halaman profil anda selengkap dan semenarik mungkin sehingga pengunjung yang melihat profil anda tertarik untuk mengenal dan mengontak anda.</em>
+
 		<br>
-		<%= link_to "Back to Profile Home", profiles_path, class: "btn" %>
+		<%= link_to "Kembali ke dashboard anda", profiles_path, class: "btn" %>
 	</div>
 
 	<div class="panel-body">
@@ -12,41 +86,58 @@
 				<div class="row">
 					<div class="col-md-3 left select">
 						<div class="form-group">
-							<label for="">Category</label>
-							<%= f.select :category, options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Select", class: "form-control" %>
+							<label for="">Kategori</label>
+							<%= f.select :category, options_for_select([["DJ", "DJ"], ["Singer", "Singer"], ["Band", "Band"], ["Magician", "Magician"], ["Comic Artist", "Comic Artist"], ["MC", "MC"]]), id: "Category", prompt: "Pilih", class: "form-control" %>
 						</div>
 					</div>
 					<div class="col-md-3 select">
 						<div class="form-group">
 							<label for="">Jumlah Personil</label>
-							<%= f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Select", class: "form-control" %>
+							<%= f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Pilih", class: "form-control" %>
 						</div>
 					</div>
 				</div>
 
 
 				<div class="row">
-					<div class="form-group">
-						<label>Profile Name</label>
-						<%= f.text_field :profile_name, placeholder: "Tuliskan nama Profile", class: "form-control" %>
+					<div class="form-group col-md-3">
+						<label>Nama Profil</label>
+						<%= f.text_field :profile_name, placeholder: "Tuliskan nama profil anda.", class: "form-control" %>
 					</div>
-					<div class="form-group">
-						<label>Profile Picture</label>
-						<br><%= image_tag @profile.profilepic, class: "thumb" %>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3" >
+						<label >Foto Profil</label>
+						<br><%= image_tag @profile.profilepic, class: "avatar-thumb" %>
 
-						<%= f.file_field :profilepic, class: "form-control", value: "Choose Profile Picture" %>
+						<%= f.file_field :profilepic, id: "image-upload", class: "form-control", value: "Upload foto profil anda." %>
 					</div>
-					<div class="form-group">
-						<label>Profile Cover Photo</label>
-						<%= f.file_field :coverphoto, class: "form-control", value: "Choose Profile Cover Photo" %>
+					<label for="image-upload" id="image-label">Preview Foto:</label><br>
+					<div id="image-preview">
 					</div>
-					<div class="form-group">
+					
+				</div>
+
+				<!--<div class="row">
+					<div class="form-group col-md-4">
+						<label>Foto Cover Profil</label>
+						<br><%= image_tag @profile.coverphoto, class: "avatar-thumb-cover" %>
+						<%= f.file_field :coverphoto,id: "image-upload2", class: "form-control", value: "Upload foto cover untuk profil anda." %>
+					</div>
+					<label for="image-upload2" id="image-label2">Preview Cover Foto:</label><br>
+					<div id="image-preview2">
+					</div>
+				</div>-->
+				<div class="row">
+					<div class="form-group col-md-6">
 						<label>Bio</label>
-						<%= f.text_area :bio, placeholder: "Tell shortly about yourself", class: "form-control" %>
+						<%= f.text_area :bio, :rows => "5", placeholder: "Ceritakan secara menarik mengenai diri anda.", class: "form-control" %>
 					</div>
-					<div class="form-group">
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
 						<label>Location</label>
-						<%= f.text_field :location, placeholder: "Where is your location?", class: "form-control" %>
+						<%= f.text_field :location, placeholder: "Tuliskan kota anda.", class: "form-control" %>
 					</div>
 				</div>
 
@@ -56,18 +147,18 @@
 							<label>Informasi Lainnya</label>
 						</div>
 						<div class="form-group">
-							<%= f.check_box :is_english %> English Language
+							<%= f.check_box :is_english %> Bahasa Inggris
 						</div>
 						<div class="form-group">
 							<%= f.check_box :is_indonesia %> Bahasa Indonesia
 						</div>
 						<div class="form-group">
-							<%= f.check_box :is_travel %> Willing to Travel
+							<%= f.check_box :is_travel %> Bersedia untuk acara di luar kota
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label>Available for:</label>
+							<label>Event yang anda bersedia untuk tampil: <br>(Bisa lebih dari 1 Event)</label>
 						</div>
 						<div class="form-group">
 							<%= f.check_box :is_cafe %> Cafe Event
@@ -96,14 +187,14 @@
 							<label>Standard Performance Rate </label>
 							<div class="input-group">
 								<div class="input-group-addon">Rp.</div>
-								<%= f.text_field :performance_fee, placeholder: "eg. 1.000.000", class: "form-control" %>
+								<%= f.text_field :performance_fee, placeholder: "Tuliskan biaya standar untuk show anda", class: "form-control" %>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2 select">
-						<label>: </label>
+						<label>Pilih Satuan </label>
 						<div class="form-group">
-							<%= f.select :fee_unit, options_for_select([["/jam", "/jam"], ["/hari", "/hari"], ["/malam", "/malam"], ["/event", "/event"]]), id: "fee_unit", prompt: "Select", class: "form-control" %>
+							<%= f.select :fee_unit, options_for_select([["/jam", "/jam"], ["/hari", "/hari"], ["/malam", "/malam"], ["/event", "/event"]]), id: "fee_unit", prompt: "Pilih", class: "form-control" %>
 						</div>
 					</div>
 				</div>
@@ -111,18 +202,19 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
+						<label>Upload Foto Portfolio Anda </label>
 							<span class="btn btn-default btn-file">
 								<i class="fa fa-cloud-upload fa-large"></i> Upload Photos
-								<%= file_field_tag "images[]", type: :file, multiple: true %>
+								<%= file_field_tag "images[]", id: "gallery-photo-add", type: :file, multiple: true %>
 							</span>
 						</div>
 					</div>
 				</div>
-
+				<div class="gallery"></div>
 				<div id="photos"><%= render "photos/list" %></div>
 
 				<div class="actions">
-					<%= f.submit "Save", class: "btn btn-primary" %>
+					<%= f.submit "Preview", class: "btn btn-primary" %>
 				</div>
 
 			<% end %>
@@ -131,19 +223,23 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script type="text/javascript">
+$(document).ready(function() {
+  $.uploadPreview({
+    input_field: "#image-upload",   // Default: .image-upload
+    preview_box: "#image-preview",  // Default: .image-preview
+    label_field: "#image-label",    // Default: .image-label
+    label_default: "Choose File",   // Default: Choose File
+    label_selected: "Profil Foto Baru:",  // Default: Change File
+    no_label: false                 // Default: false
+  });
+  $.uploadPreview2({
+    input_field2: "#image-upload2",   // Default: .image-upload
+    preview_box2: "#image-preview2",  // Default: .image-preview
+    label_field2: "#image-label2",    // Default: .image-label
+    label_default2: "Choose File",   // Default: Choose File
+    label_selected2: "Cover Foto Baru:",  // Default: Change File
+    no_label2: false                 // Default: false
+  });
+});
+</script>

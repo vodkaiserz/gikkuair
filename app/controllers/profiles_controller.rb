@@ -15,8 +15,12 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile
   end
 
-  def create
-    @profile = current_user.build_profile(profile_params)
+ def create
+      @profile = current_user.build_profile(profile_params)
+    if params[:previewButton] == "Preview"
+      preview
+      render :preview
+    end 
     if @profile.save
       if params[:images]
         params[:images].each do |image|
@@ -31,6 +35,16 @@ class ProfilesController < ApplicationController
       render :new
     end
   end
+
+def preview
+   if params[:createButton] == "Post it!"
+     @post.save
+   elseif params[:changeButton] == "Make Changes"
+     create
+     render :create
+   end
+end
+
 
   def edit
     if current_user.id == @profile.user.id

@@ -14,14 +14,16 @@
         <div class="form-group">
           <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
         </div>
-
-        <div class="form-group">
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(Please enter your password, <%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
+        <div class="form-group">
           <%= f.password_field :password, :class => "form-control", :placeholder => "Password", autocomplete: "off" %>
-        </div>
+         </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class:'form-control', :placeholder => "Confirm Your Password" %>
 
+        </div>
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn btn-primary" %>
         </div>

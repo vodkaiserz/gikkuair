@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
 
   has_attached_file :profilepic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/profilepics/original/missing.png"
   validates_attachment_content_type :profilepic, :content_type => /\Aimage\/.*\Z/
-  has_attached_file :coverphoto
+  has_attached_file :coverphoto, :styles => { :medium => "840x300!", :small => "280x100!" }
   validates_attachment_content_type :coverphoto, :content_type => /\Aimage\/.*\Z/
   # validates :photos, presence: true
   validates :category, presence: true
