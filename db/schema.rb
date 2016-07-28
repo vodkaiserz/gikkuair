@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509091400) do
+ActiveRecord::Schema.define(version: 20160717125657) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160509091400) do
     t.boolean  "is_birthday"
     t.boolean  "is_school"
     t.boolean  "is_cafe"
+    t.boolean  "youtube_link"
     t.integer  "performance_fee"
     t.string   "fee_unit"
     t.integer  "user_id"
@@ -153,5 +154,16 @@ ActiveRecord::Schema.define(version: 20160509091400) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "link"
+    t.string   "title"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "videos", ["uid"], name: "index_videos_on_uid"
 
 end

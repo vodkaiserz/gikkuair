@@ -83,6 +83,7 @@ img {
 		<div class="container">
 			
 			<%= form_for @profile, html: { multipart: true } do |f| %>
+			    <%= render 'shared/errors', object: @profile %>
 				<div class="row">
 					<div class="col-md-3 left select">
 						<div class="form-group">
@@ -212,13 +213,32 @@ img {
 				</div>
 				<div class="gallery"></div>
 				<div id="photos"><%= render "photos/list" %></div>
-
+				<label>Berikan Link Video Youtube anda </label>
+			    <% @profile.videos.in_groups_of(3) do |group| %>
+			      <div class="row">
+			        <% group.each do |video| %>
+			          <% if video %>
+			            <div class="col-md-4">
+			                <div class="caption">
+			                  <h5><%= video.title %></h5>
+			                  <h5><%= video.link %></h5>
+			                </div>
+			              </div>
+			          <% end %>
+			        <% end %>
+			      <% end %>
+					<div id="youtube" style="display:none;" >
+						<%= f.fields_for :videos do |h| %>
+						       <%= h.text_field :link, class: 'form-control' %>
+			
+						 <% end %>
 				<div class="actions">
-					<%= f.submit "Preview", class: "btn btn-primary" %>
+					<%= f.submit "Save", class: "btn btn-primary" %>
 				</div>
-
-			<% end %>
+				<% end %>
+			
 		</div>
+
 	</div>
 </div>
 
@@ -241,5 +261,14 @@ $(document).ready(function() {
     label_selected2: "Cover Foto Baru:",  // Default: Change File
     no_label2: false                 // Default: false
   });
-});
+var checkbox = document.getElementById('chk_tarjeta');
+  var details_div = document.getElementById('youtube');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'block';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+    });
 </script>

@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+
+gem 'yt', '~> 0.13.7'
+gem 'autoprefixer-rails'
+gem 'omniauth-google-oauth2'
+gem 'active_type', '0.3.1'
 gem 'filterrific'
 gem 'will_paginate', '~> 3.1'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'

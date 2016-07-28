@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :proposals, only: [:new, :create]
   end
   
-
+  resources :videos
   get '/search' => 'pages#search'
 
 end

@@ -13,40 +13,27 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = current_user.build_profile
+    @profile.videos.build
   end
 
  def create
       @profile = current_user.build_profile(profile_params)
-    if params[:previewButton] == "Preview"
-      preview
-      render :preview
-    end 
     if @profile.save
       if params[:images]
         params[:images].each do |image|
           @profile.photos.create!(image: image)
         end
       end
-
       @photos = @profile.photos
       redirect_to edit_profile_path(@profile), notice: "Profile created!"
     else
-      flash[:alert] = "Profile could not be created!"
       render :new
     end
   end
 
-def preview
-   if params[:createButton] == "Post it!"
-     @post.save
-   elseif params[:changeButton] == "Make Changes"
-     create
-     render :create
-   end
-end
-
 
   def edit
+    @profile.videos.build
     if current_user.id == @profile.user.id
       @photos = @profile.photos
     else
@@ -55,6 +42,7 @@ end
   end
 
   def update
+
     if @profile.update(profile_params)
       if @profile.save
         if params[:images]
@@ -62,13 +50,15 @@ end
             @profile.photos.create(image: image)
           end
         end
-      
-      # @photos = @profile.photos // testing to see if I don't need this?
+       
+      @photos = @profile.photos 
         redirect_to edit_profile_path(@profile), notice: "Profile updated!!"
       else
         flash[:alert] = "Profile could not be updated!"
         render :edit
       end
+    else
+      redirect_to root_path, notice: "You don't have permission."
     end
   end
 
@@ -78,7 +68,7 @@ end
     end
 
     def profile_params
-      params.require(:profile).permit(:category, :member, :profile_name, :bio, :location, :is_english, :is_indonesia, :is_travel, :is_wedding, :is_corporate, :is_private, :is_birthday, :is_school, :is_cafe, :performance_fee, :profilepic, :fee_unit, :coverphoto)
+      params.require(:profile).permit(:link, :category, :member, :profile_name, :bio, :location, :is_english, :is_indonesia, :is_travel, :is_wedding, :is_corporate, :is_private, :is_birthday, :is_school, :is_cafe, :profilepic, :coverphoto, videos_attributes: [:id, :link, :_destroy])
     end
 end  
 
