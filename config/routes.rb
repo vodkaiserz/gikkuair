@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :photos
   resources :proposals, only: [:new, :create]
 
-  resources :profiles, except: [:destroy] do
+  resources :profiles do
     resources :proposals, only: [:new, :create]
   end
   

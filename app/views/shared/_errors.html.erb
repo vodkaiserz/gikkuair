@@ -1,15 +1,28 @@
 <% if object.errors.any? %>
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      <h3 class="panel-title">The following errors were found while submitting the form:</h3>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <div class="panel-body">
-      <ul>
-        <% object.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+<% if defined?(nested_models) && nested_models.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% nested_models.each do |nested_model| %>
+        <% if nested_model.errors.any? %>
+          <ul>
+            <% nested_model.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    </div>
+      <% end %>
+    </ul>
   </div>
 <% end %>

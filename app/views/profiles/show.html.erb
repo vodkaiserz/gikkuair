@@ -120,19 +120,21 @@
 				</div>
 			</div>
 		</div>
-		<% unless @profile.videos.blank? %>
+		<% if @profile.videos.any? %>
 		  <div class="container">
 		    <% @profile.videos.in_groups_of(3) do |group| %>
 		      <div class="row">
 		        <% group.each do |video| %>
-		            <div class="col-md-4">
-		              <div class="yt_video thumbnail">
-		              <iframe width="350" height="180" src="<%= "http://www.youtube.com/embed/"+video.uid %>"frameborder="0" allowfullscreen></iframe>
+		        <% if video %>
+		            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		              <div class="videoWrapper">
+		              <iframe width="350" height="180" src="<%= "http://www.youtube.com/embed/" + video.uid %>"frameborder="0" allowfullscreen></iframe>
 		                <div class="caption">
 		                  <h5><%= video.title %></h5>
 		                </div>
 		              </div>
 		            </div>
+		        <% end %>
 		        <% end %>
 		      </div>
 		      <% end %>

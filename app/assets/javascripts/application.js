@@ -23,4 +23,5 @@
 //= require cbpAnimatedHeader
 //= require classie
 //= require creative
+//= require cocoon
 //= require_tree .

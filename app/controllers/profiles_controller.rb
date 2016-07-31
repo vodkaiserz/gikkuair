@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
 
   def index
@@ -53,22 +53,24 @@ class ProfilesController < ApplicationController
        
       @photos = @profile.photos 
         redirect_to edit_profile_path(@profile), notice: "Profile updated!!"
-      else
-        flash[:alert] = "Profile could not be updated!"
-        render :edit
       end
     else
-      redirect_to root_path, notice: "You don't have permission."
+      flash[:alert] = "Profile could not be updated!"
+      render :edit
     end
   end
+  def destroy
+    @profile.destroy
 
+    redirect_to profiles_path, notice: "Profile deleted!!"
+end
   private
     def set_profile
       @profile = Profile.find(params[:id])
     end
 
     def profile_params
-      params.require(:profile).permit(:link, :category, :member, :profile_name, :bio, :location, :is_english, :is_indonesia, :is_travel, :is_wedding, :is_corporate, :is_private, :is_birthday, :is_school, :is_cafe, :profilepic, :coverphoto, videos_attributes: [:id, :link, :_destroy])
+      params.require(:profile).permit(:category, :member, :profile_name, :bio, :location, :is_english, :is_indonesia, :is_travel, :is_wedding, :is_corporate, :is_private, :is_birthday, :is_school, :is_cafe, :profilepic, :coverphoto, videos_attributes: [:id, :link, :_destroy])
     end
 end  
 

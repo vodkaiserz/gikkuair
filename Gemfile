@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem "cocoon"
 gem 'yt', '~> 0.13.7'
 gem 'autoprefixer-rails'
 gem 'omniauth-google-oauth2'
