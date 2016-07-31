@@ -46,7 +46,7 @@ Rails.application.configure do
     :port => 587,
     :domain => 'ec2-52-77-215-44.ap-southeast-1.compute.amazonaws.com:3000',
     :user_name => "leinadsaille@gmail.com",
-    :password => "14desember88",
+    :password => "r4gn4r0k",
     :authentication => :plain,
     :enable_starttls_auto => true
   }

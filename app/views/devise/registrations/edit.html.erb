@@ -14,6 +14,12 @@
       <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
         <li class="sidebar-item"><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "btn btn-default wide"  %></li>
       <% end -%>
+      <li class="sidebar-item">
+
+        <%= link_to "Cancel my account",
+      registration_path(current_user),  class: "btn btn-default wide",
+      data: { confirm: "Are you sure?" },
+      method: :delete %></li>
     </ul>
   </div>
 
